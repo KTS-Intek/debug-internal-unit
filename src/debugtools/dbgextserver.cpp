@@ -22,10 +22,17 @@
 
 #include "dbgextserver.h"
 #include <QtCore>
+
+///[!] matilda-bbb-settings
 #include "src/matilda/settloader4matilda.h" //settloader4matilda.h"
-#include "dbgaboutsourcetype.h"
-#include "src/shared/networkconverthelper.h"
 #include "src/matilda/settloader4matildadefaults.h"
+
+///[!] type-converter
+#include "src/base/convertatype.h"
+#include "src/shared/networkconverthelper.h"
+
+#include "dbgaboutsourcetype.h"
+
 
 DbgExtServer::DbgExtServer(const quint16 &port, QObject *parent) : QTcpServer(parent)
 {
@@ -239,7 +246,7 @@ DbgExtSocket::DbgExtSocket(QObject *parent) : QTcpSocket(parent)
 
 void DbgExtSocket::sendAboutSourceType()
 {
-    mWrite2Local(1, DbgAboutSourceType::varHash2str(DbgAboutSourceType::getAboutSourcType()));
+    mWrite2Local(1, ConvertAtype::varHash2str(DbgAboutSourceType::getAboutSourcType()));
 }
 
 //----------------------------------------------------------------
