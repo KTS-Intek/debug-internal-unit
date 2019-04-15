@@ -53,6 +53,8 @@ public slots:
 
     void init4matilda();
 
+    void appendDbgExtDataSlot(quint32 sourceType, QString data);
+
 private:
     void onConnectedStts(bool isConn);
 

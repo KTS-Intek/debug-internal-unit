@@ -175,9 +175,15 @@ void DbgExtServer::init4matilda()
     connect(tmrUpdateSett, SIGNAL(timeout()), this, SLOT(refreshBlockAndWhiteIpList()) );
 #endif
 
+    connect(this, SIGNAL(appendDbgExtData(quint32,QString)), SLOT(appendDbgExtDataSlot(quint32,QString)));
     useThisPort = 0;
     stopAll = false;
     reStartServer();
+}
+
+void DbgExtServer::appendDbgExtDataSlot(quint32 sourceType, QString data)
+{
+    qDebug() << "appendDbgExtData=" << sourceType << data;
 }
 
 //----------------------------------------------------------------
