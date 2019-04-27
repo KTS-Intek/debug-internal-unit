@@ -85,6 +85,7 @@ public slots:
 
     void mWrite2Local(quint32 sourceType, QString writeData);
 
+    void appendDbgExtData(quint32 sourceType, QString writeData);
 
 
 private slots:

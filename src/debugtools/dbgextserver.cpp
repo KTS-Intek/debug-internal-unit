@@ -230,7 +230,7 @@ void DbgExtServer::incomingConnection(qintptr socketDescr)
      }
 
      socket->sendAboutSourceType();
-    connect(this, SIGNAL(appendDbgExtData(quint32,QString)), socket, SLOT(mWrite2Local(quint32,QString)) );
+    connect(this, SIGNAL(appendDbgExtData(quint32,QString)), socket, SLOT(appendDbgExtData(quint32,QString)) );
     connect(this, SIGNAL(stopAllSignal()), socket, SLOT(onDisconn()) );
 
 
@@ -305,6 +305,11 @@ void DbgExtSocket::mWrite2Local(quint32 sourceType, QString writeData)
     write(block);         //     qDebug() << block.toHex();
     waitForBytesWritten(50);
 
+}
+
+void DbgExtSocket::appendDbgExtData(quint32 sourceType, QString writeData)
+{
+    mWrite2Local( (sourceType < 100 ) ? 255 : sourceType, writeData);
 }
 
 //----------------------------------------------------------------
