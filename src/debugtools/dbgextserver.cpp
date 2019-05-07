@@ -32,7 +32,7 @@
 #include "src/shared/networkconverthelper.h"
 
 #include "dbgaboutsourcetype.h"
-
+#include "peredavatordefs.h"
 
 DbgExtServer::DbgExtServer(const quint16 &port, QObject *parent) : QTcpServer(parent)
 {
