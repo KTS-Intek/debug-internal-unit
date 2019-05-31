@@ -183,7 +183,7 @@ void DbgExtServer::init4matilda()
 
 void DbgExtServer::appendDbgExtDataSlot(quint32 sourceType, QString data)
 {
-    qDebug() << "appendDbgExtData=" << sourceType << data;
+    qDebug() << QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss.zzz") << "appendDbgExtData=" << sourceType << data;
 }
 
 //----------------------------------------------------------------
