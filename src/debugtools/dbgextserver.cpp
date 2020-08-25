@@ -34,7 +34,7 @@
 #include "dbgaboutsourcetype.h"
 #include "peredavatordefs.h"
 
-DbgExtServer::DbgExtServer(const quint16 &port, QObject *parent) : QTcpServer(parent)
+DbgExtServer::DbgExtServer(const bool &verboseMode, const quint16 &port, QObject *parent) : QTcpServer(parent), verboseMode(verboseMode)
 {
     serverIp = SettLoader4matildaDefaults::defServerName();
     serverP = port;// SettLoader4matildaDefaults::defDbgFireflyPort();
@@ -175,7 +175,8 @@ void DbgExtServer::init4matilda()
     connect(tmrUpdateSett, SIGNAL(timeout()), this, SLOT(refreshBlockAndWhiteIpList()) );
 #endif
 
-    connect(this, SIGNAL(appendDbgExtData(quint32,QString)), SLOT(appendDbgExtDataSlot(quint32,QString)));
+    if(verboseMode)
+        connect(this, SIGNAL(appendDbgExtData(quint32,QString)), SLOT(appendDbgExtDataSlot(quint32,QString)));
     useThisPort = 0;
     stopAll = false;
     reStartServer();
@@ -183,7 +184,7 @@ void DbgExtServer::init4matilda()
 
 void DbgExtServer::appendDbgExtDataSlot(quint32 sourceType, QString data)
 {
-    qDebug() << QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss.zzz") << "appendDbgExtData=" << sourceType << data;
+        qDebug() << QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss.zzz") << "appendDbgExtData=" << sourceType << data;
 }
 
 //----------------------------------------------------------------

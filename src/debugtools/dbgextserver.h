@@ -32,7 +32,8 @@ class DbgExtServer : public QTcpServer
 {
     Q_OBJECT
 public:
-    explicit DbgExtServer(const quint16 &port, QObject *parent = nullptr);
+    explicit DbgExtServer(const bool &verboseMode, const quint16 &port, QObject *parent = nullptr);
+    bool verboseMode;
 
 signals:
     void appendDbgExtData(quint32 sourceType, QString data);
