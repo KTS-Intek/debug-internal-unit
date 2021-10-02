@@ -59,8 +59,8 @@ void DbgExtServer::reStartServer()
     if(true){
         SettLoader4matilda settLoader;
 
-        whiteIpList = settLoader.loadOneSett(SETT_WHITE_IP_LIST).toStringList();
-        blockThisIp = settLoader.loadOneSett(SETT_BLACK_IP_LIST).toStringList();
+        whiteIpList = settLoader.loadOneSett(SETT_ALLOW_IP_LIST).toStringList();
+        blockThisIp = settLoader.loadOneSett(SETT_BLOCK_IP_LIST).toStringList();
 
 //        serverP = SettLoader4matildaDefaults::defDbgUargPort();//settLoader.loadOneSett(SETT_DBG_PORT).toInt();
 //        serverIp = settLoader.loadOneSett(SETT_TCP_HOST_ADDR).toString();
@@ -145,8 +145,8 @@ void DbgExtServer::refreshBlockAndWhiteIpList()
         return;
 
     SettLoader4matilda settLoader;
-    whiteIpList = settLoader.loadOneSett(SETT_WHITE_IP_LIST).toStringList();
-    blockThisIp = settLoader.loadOneSett(SETT_BLACK_IP_LIST).toStringList();
+    whiteIpList = settLoader.loadOneSett(SETT_ALLOW_IP_LIST).toStringList();
+    blockThisIp = settLoader.loadOneSett(SETT_BLOCK_IP_LIST).toStringList();
 
 //    bool restatLater = (serverP != SettLoader4matildaDefaults::defDbgUargPort() ||
 //            serverIp != settLoader.loadOneSett(SETT_TCP_HOST_ADDR).toString());
